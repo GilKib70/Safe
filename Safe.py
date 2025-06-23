@@ -1,6 +1,16 @@
 import sys
 import subprocess
 
+# Auto-install critical dependencies
+REQUIRED_PACKAGES = ["plotly==5.18.0", "pandas==2.1.4"]
+for package in REQUIRED_PACKAGES:
+    try:
+        __import__(package.split("==")[0])
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+import sys
+import subprocess
+
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
