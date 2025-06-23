@@ -1,3 +1,13 @@
+import sys
+import subprocess
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    import plotly
+except ImportError:
+    install("plotly==5.18.0")
 import streamlit as st
 import pandas as pd
 import numpy as np
